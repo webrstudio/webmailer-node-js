@@ -1,12 +1,12 @@
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-  host: "mail.webrstudio.com",
+  host: "mail.cmdp.org.mx",
   port: 465,
   secure: true,
   auth: {
-    user: "contacto@webrstudio.com",
-    pass: "Anotherbrickinthewall_10",
+    user: "contacto.dermapedia@cmdp.org.mx",
+    pass: "Cmdp2024-25%",
   },
 });
 const sendEmail = async (req, res) => {
@@ -25,12 +25,12 @@ const sendEmail = async (req, res) => {
   }*/
   try {
     const message = await transporter.sendMail({
-      from: "contacto@webrstudio.com",
+      from: "contacto.dermapedia@cmdp.org.mx",
       to: req.body.user_email,
       subject: "Registro - Congreso Nacional de Dermatología Pediátrica",
       html: `
-                <h2>Tu pago ha sido aprobado</h2>
-                <p><strong>Correo:</strong> ${req.body.user_name}</p>
+                <h2>Tu pago ha sido aprobado, tus datos de acceso son:</h2>
+                <p><strong>Correo:</strong> ${req.body.user_email}</p>
                 <p><strong>Contraseña:</strong> ${req.body.user_password}</p>
                 <p><strong>Monto:</strong> $${req.body.payment_amount}</p>
             `,
